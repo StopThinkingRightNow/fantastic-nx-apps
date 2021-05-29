@@ -1,0 +1,516 @@
+{
+  "version": 1,
+  "cli": {
+    "analytics": false,
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "rs-client",
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "tslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "tslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "projects": {
+    "rs-client": {
+      "projectType": "application",
+      "root": "apps/rs-client",
+      "sourceRoot": "apps/rs-client/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/rs-client",
+            "index": "apps/rs-client/src/index.html",
+            "main": "apps/rs-client/src/main.ts",
+            "polyfills": "apps/rs-client/src/polyfills.ts",
+            "tsConfig": "apps/rs-client/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/rs-client/src/favicon.ico",
+              "apps/rs-client/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/rs-client/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/rs-client/src/environments/environment.ts",
+                  "with": "apps/rs-client/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rs-client:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rs-client:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rs-client:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/rs-client/tsconfig.app.json",
+              "apps/rs-client/tsconfig.spec.json",
+              "apps/rs-client/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/rs-client/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/rs-client"],
+          "options": {
+            "jestConfig": "apps/rs-client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "rs-client-e2e": {
+      "root": "apps/rs-client-e2e",
+      "sourceRoot": "apps/rs-client-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/rs-client-e2e/cypress.json",
+            "tsConfig": "apps/rs-client-e2e/tsconfig.e2e.json",
+            "devServerTarget": "rs-client:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rs-client:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/rs-client-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/rs-client-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "domain-domain-shell": {
+      "projectType": "library",
+      "root": "libs/domain/domain-shell",
+      "sourceRoot": "libs/domain/domain-shell/src",
+      "prefix": "rs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/domain/domain-shell/tsconfig.lib.json",
+              "libs/domain/domain-shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/domain/domain-shell/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/domain/domain-shell/src/test.ts",
+            "tsConfig": "libs/domain/domain-shell/tsconfig.spec.json",
+            "karmaConfig": "libs/domain/domain-shell/karma.conf.js"
+          }
+        }
+      }
+    },
+    "customers-domain-customers": {
+      "projectType": "library",
+      "root": "libs/customers/domain-customers",
+      "sourceRoot": "libs/customers/domain-customers/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/customers/domain-customers/tsconfig.lib.json",
+              "libs/customers/domain-customers/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/customers/domain-customers/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/customers/domain-customers/src/test.ts",
+            "tsConfig": "libs/customers/domain-customers/tsconfig.spec.json",
+            "karmaConfig": "libs/customers/domain-customers/karma.conf.js"
+          }
+        }
+      }
+    },
+    "products-domain-products": {
+      "projectType": "library",
+      "root": "libs/products/domain-products",
+      "sourceRoot": "libs/products/domain-products/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products/domain-products/tsconfig.lib.json",
+              "libs/products/domain-products/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/products/domain-products/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/products/domain-products/src/test.ts",
+            "tsConfig": "libs/products/domain-products/tsconfig.spec.json",
+            "karmaConfig": "libs/products/domain-products/karma.conf.js"
+          }
+        }
+      }
+    },
+    "cart-domain-cart": {
+      "projectType": "library",
+      "root": "libs/cart/domain-cart",
+      "sourceRoot": "libs/cart/domain-cart/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cart/domain-cart/tsconfig.lib.json",
+              "libs/cart/domain-cart/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cart/domain-cart/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/cart/domain-cart/src/test.ts",
+            "tsConfig": "libs/cart/domain-cart/tsconfig.spec.json",
+            "karmaConfig": "libs/cart/domain-cart/karma.conf.js"
+          }
+        }
+      }
+    },
+    "orders-domain-orders": {
+      "projectType": "library",
+      "root": "libs/orders/domain-orders",
+      "sourceRoot": "libs/orders/domain-orders/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/orders/domain-orders/tsconfig.lib.json",
+              "libs/orders/domain-orders/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/orders/domain-orders/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/orders/domain-orders/src/test.ts",
+            "tsConfig": "libs/orders/domain-orders/tsconfig.spec.json",
+            "karmaConfig": "libs/orders/domain-orders/karma.conf.js"
+          }
+        }
+      }
+    },
+    "rs-company": {
+      "projectType": "application",
+      "root": "apps/rs-company",
+      "sourceRoot": "apps/rs-company/src",
+      "prefix": "rsc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/rs-company",
+            "index": "apps/rs-company/src/index.html",
+            "main": "apps/rs-company/src/main.ts",
+            "polyfills": "apps/rs-company/src/polyfills.ts",
+            "tsConfig": "apps/rs-company/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/rs-company/src/favicon.ico",
+              "apps/rs-company/src/assets"
+            ],
+            "styles": ["apps/rs-company/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/rs-company/src/environments/environment.ts",
+                  "with": "apps/rs-company/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rs-company:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rs-company:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rs-company:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/rs-company/tsconfig.app.json",
+              "apps/rs-company/tsconfig.spec.json",
+              "apps/rs-company/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/rs-company/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/rs-company/src/test.ts",
+            "tsConfig": "apps/rs-company/tsconfig.spec.json",
+            "karmaConfig": "apps/rs-company/karma.conf.js",
+            "polyfills": "apps/rs-company/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        }
+      }
+    },
+    "rs-company-e2e": {
+      "root": "apps/rs-company-e2e",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/rs-company-e2e/protractor.conf.js",
+            "devServerTarget": "rs-company:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rs-company:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/rs-company-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/rs-company-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "products-product-list": {
+      "projectType": "library",
+      "root": "libs/products/product-list",
+      "sourceRoot": "libs/products/product-list/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/products/product-list/tsconfig.lib.json",
+              "libs/products/product-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/products/product-list/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/products/product-list/src/test.ts",
+            "tsConfig": "libs/products/product-list/tsconfig.spec.json",
+            "karmaConfig": "libs/products/product-list/karma.conf.js"
+          }
+        }
+      }
+    },
+    "common": {
+      "projectType": "library",
+      "root": "libs/common",
+      "sourceRoot": "libs/common/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/common/tsconfig.lib.json",
+              "libs/common/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/common/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/common/src/test.ts",
+            "tsConfig": "libs/common/tsconfig.spec.json",
+            "karmaConfig": "libs/common/karma.conf.js"
+          }
+        }
+      }
+    },
+    "orders-orders": {
+      "projectType": "library",
+      "root": "libs/orders/orders",
+      "sourceRoot": "libs/orders/orders/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/orders/orders/tsconfig.lib.json",
+              "libs/orders/orders/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/orders/orders/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/orders/orders/src/test.ts",
+            "tsConfig": "libs/orders/orders/tsconfig.spec.json",
+            "karmaConfig": "libs/orders/orders/karma.conf.js"
+          }
+        }
+      }
+    }
+  }
+}

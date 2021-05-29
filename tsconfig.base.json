@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rs-form/domain-shell": ["libs/domain/domain-shell/src/index.ts"],
+      "@rs-form/domain-users": ["libs/customers/domain-customers/src/index.ts"],
+      "@rs-form/domain-products": [
+        "libs/products/domain-products/src/index.ts"
+      ],
+      "@rs-form/domain-cart": ["libs/cart/domain-cart/src/index.ts"],
+      "@rs-form/domain-orders": ["libs/orders/domain-orders/src/index.ts"],
+      "@rs-apps/libs/products/products": [
+        "libs/libs/products/products/src/index.ts"
+      ],
+      "@rs-apps/libs/products/product-list": [
+        "libs/libs/products/product-list/src/index.ts"
+      ],
+      "@rs-apps/products/product-list": [
+        "libs/products/product-list/src/index.ts"
+      ],
+      "@rs-form/common": ["libs/common/src/index.ts"],
+      "@rs-apps/orders/orders": ["libs/orders/orders/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

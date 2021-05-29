@@ -1,0 +1,18 @@
+apps:
+  application-1-ee:
+    - libOne
+    -
+  application-2-ee:
+libs:
+  libOne:
+    - core.module.ts
+    - public-api.ts
+  libTwo:
+    - core.module.ts
+    - public-api.ts
+  libThree:
+    - core.module.ts
+    - public-api.ts
+  libFour:
+    - core.module.ts
+    - public-api.ts

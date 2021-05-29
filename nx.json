@@ -1,0 +1,61 @@
+{
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "rs-apps",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "rs-client": {
+      "tags": []
+    },
+    "rs-client-e2e": {
+      "tags": [],
+      "implicitDependencies": ["rs-client"]
+    },
+    "domain-domain-shell": {
+      "tags": []
+    },
+    "customers-domain-customers": {
+      "tags": []
+    },
+    "products-domain-products": {
+      "tags": []
+    },
+    "cart-domain-cart": {
+      "tags": []
+    },
+    "orders-domain-orders": {
+      "tags": []
+    },
+    "rs-company": {
+      "tags": []
+    },
+    "rs-company-e2e": {
+      "tags": [],
+      "implicitDependencies": ["rs-company"]
+    },
+    "products-product-list": {
+      "tags": []
+    },
+    "common": {
+      "tags": []
+    },
+    "orders-orders": {
+      "tags": []
+    }
+  }
+}

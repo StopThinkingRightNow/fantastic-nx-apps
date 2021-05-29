@@ -1,0 +1,10 @@
+<!-- <p>cart works!</p> -->
+<!-- <rs-layout></rs-layout> -->
+<!-- <rs-apps-navigation></rs-apps-navigation> -->
+<rs-page-layout-container [showSideNav]="true" [showHeader]="true" [showSideBar]="false">
+  <rs-page-layout-header><h1>Header</h1> <button>Show</button></rs-page-layout-header>
+  <rs-page-layout-content>
+    <!-- <rs-order-list></rs-order-list> -->
+    <router-outlet></router-outlet>
+  </rs-page-layout-content>
+</rs-page-layout-container>
