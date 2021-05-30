@@ -570,6 +570,58 @@
           }
         }
       }
+    },
+    "orders-ui": {
+      "projectType": "library",
+      "root": "libs/orders/ui",
+      "sourceRoot": "libs/orders/ui/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/orders/ui/tsconfig.lib.json",
+              "libs/orders/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/orders/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/orders/ui/src/test.ts",
+            "tsConfig": "libs/orders/ui/tsconfig.spec.json",
+            "karmaConfig": "libs/orders/ui/karma.conf.js"
+          }
+        }
+      }
+    },
+    "orders-feature-shell": {
+      "projectType": "library",
+      "root": "libs/orders/feature-shell",
+      "sourceRoot": "libs/orders/feature-shell/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/orders/feature-shell/tsconfig.lib.json",
+              "libs/orders/feature-shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/orders/feature-shell/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/orders/feature-shell/src/test.ts",
+            "tsConfig": "libs/orders/feature-shell/tsconfig.spec.json",
+            "karmaConfig": "libs/orders/feature-shell/karma.conf.js"
+          }
+        }
+      }
     }
   }
 }

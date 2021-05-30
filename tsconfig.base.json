@@ -37,6 +37,10 @@
       "@rs-apps/ui/user-interface": ["libs/ui/user-interface/src/index.ts"],
       "@rs-apps/ui/presentation/user-interface": [
         "libs/ui/presentation/user-interface/src/index.ts"
+      ],
+      "@rs-form/orders/ui": ["libs/orders/ui/src/index.ts"],
+      "@rs-form/orders/feature-shell": [
+        "libs/orders/feature-shell/src/index.ts"
       ]
     }
   },

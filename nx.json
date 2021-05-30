@@ -62,6 +62,12 @@
     },
     "ui-presentation-user-interface": {
       "tags": []
+    },
+    "orders-ui": {
+      "tags": []
+    },
+    "orders-feature-shell": {
+      "tags": []
     }
   }
 }

@@ -14,6 +14,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 // import { NbThemeModule, NbLayoutModule, NbUserModule, NbCardModule } from '@nebular/theme';
 // import { NbEvaIconsModule } from '@nebular/eva-icons';
+import {MatListModule} from '@angular/material/list';
+
 
 const routes: Routes = [
   {
@@ -49,6 +51,7 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatListModule
     // NbThemeModule.forRoot({ name: 'default' }),
     // NbLayoutModule,
     // NbCardModule,
