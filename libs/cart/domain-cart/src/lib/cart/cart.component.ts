@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
 
   openSidebar() {
     this.showSideBar = !this.showSideBar;
-    this.pageLayoutService.setSidebar(this.showSideBar);
+    this.pageLayoutService.toggleSidebar(this.showSideBar);
   }
 
 }

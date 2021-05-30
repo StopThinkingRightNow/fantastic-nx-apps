@@ -5,18 +5,21 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PageLayoutService {
-  private ready = new BehaviorSubject(false);
-  ready$: Observable<boolean>;
+  private sideNav = new BehaviorSubject(false);
+  private sideBar = new BehaviorSubject(false);
+  sideNav$: Observable<boolean>;
+  sideBar$: Observable<boolean>;
 
   constructor() {
-    this.ready$ = this.ready.asObservable();
+    this.sideBar$ = this.sideBar.asObservable();
+    this.sideNav$ = this.sideNav.asObservable();
   }
 
-  setSidebar(value) {
-    this.ready.next(value);
+  toggleSideNav(value: boolean) {
+    this.sideNav.next(value);
   }
 
-  removeSidebar(value) {
-    this.ready.next(value);
+  toggleSidebar(value: boolean) {
+    this.sideBar.next(value);
   }
 }

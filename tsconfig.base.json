@@ -32,7 +32,12 @@
         "libs/products/product-list/src/index.ts"
       ],
       "@rs-form/common": ["libs/common/src/index.ts"],
-      "@rs-apps/orders/orders": ["libs/orders/orders/src/index.ts"]
+      "@rs-apps/orders/orders": ["libs/orders/orders/src/index.ts"],
+      "@rs-form/domain-shell/ui": ["libs/ui/domain-shell/src/index.ts"],
+      "@rs-apps/ui/user-interface": ["libs/ui/user-interface/src/index.ts"],
+      "@rs-apps/ui/presentation/user-interface": [
+        "libs/ui/presentation/user-interface/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

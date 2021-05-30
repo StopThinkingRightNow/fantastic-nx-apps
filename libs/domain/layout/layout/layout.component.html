@@ -3,7 +3,7 @@
     <ng-content select="rs-page-layout-header"></ng-content>
   </div>
   <div class="layout-page-content">
-    <div class="layout-side-menu" *ngIf="showSideNav">
+    <div class="layout-side-menu" *ngIf="showSideNav$ | async">
       <ng-content
         select="rs-page-layout-side-menu"
       ></ng-content>

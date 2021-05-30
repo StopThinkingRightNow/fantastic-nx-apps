@@ -77,7 +77,8 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "apps/rs-client/src/styles.scss"
+              "apps/rs-client/src/styles.scss",
+              "node_modules/@nebular/theme/styles/prebuilt/default.css"
             ],
             "scripts": []
           },
@@ -331,7 +332,10 @@
               "apps/rs-company/src/favicon.ico",
               "apps/rs-company/src/assets"
             ],
-            "styles": ["apps/rs-company/src/styles.scss"],
+            "styles": [
+              "apps/rs-company/src/styles.scss",
+              "node_modules/@nebular/theme/styles/prebuilt/default.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -508,6 +512,61 @@
             "main": "libs/orders/orders/src/test.ts",
             "tsConfig": "libs/orders/orders/tsconfig.spec.json",
             "karmaConfig": "libs/orders/orders/karma.conf.js"
+          }
+        }
+      }
+    },
+    "ui-domain-shell": {
+      "projectType": "library",
+      "root": "libs/ui/domain-shell",
+      "sourceRoot": "libs/ui/domain-shell/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/domain-shell/tsconfig.lib.json",
+              "libs/ui/domain-shell/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/domain-shell/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui/domain-shell/src/test.ts",
+            "tsConfig": "libs/ui/domain-shell/tsconfig.spec.json",
+            "karmaConfig": "libs/ui/domain-shell/karma.conf.js"
+          }
+        }
+      }
+    },
+    "ui-presentation-user-interface": {
+      "projectType": "library",
+      "root": "libs/ui/presentation/user-interface",
+      "sourceRoot": "libs/ui/presentation/user-interface/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/presentation/user-interface/tsconfig.lib.json",
+              "libs/ui/presentation/user-interface/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/presentation/user-interface/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui/presentation/user-interface/src/test.ts",
+            "tsConfig": "libs/ui/presentation/user-interface/tsconfig.spec.json",
+            "karmaConfig": "libs/ui/presentation/user-interface/karma.conf.js"
           }
         }
       }

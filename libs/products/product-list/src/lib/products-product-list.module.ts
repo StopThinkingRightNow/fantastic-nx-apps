@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './feature-shell/product-list/product-list.component';
-
+import { UiDomainShellModule } from '@rs-form/domain-shell/ui';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), UiDomainShellModule],
   declarations: [
     ProductListComponent
   ],

@@ -24,9 +24,11 @@ export class PageLayoutContainerComponent implements OnInit {
   showSideBar = false;
 
   showSideBar$: Observable<boolean>;
+  showSideNav$: Observable<boolean>;
 
   constructor(private pageLayoutService: PageLayoutService) {
-    this.showSideBar$ = this.pageLayoutService.ready$;
+    this.showSideNav$ = this.pageLayoutService.sideNav$;
+    this.showSideBar$ = this.pageLayoutService.sideBar$;
   }
 
   ngOnInit(): void {}

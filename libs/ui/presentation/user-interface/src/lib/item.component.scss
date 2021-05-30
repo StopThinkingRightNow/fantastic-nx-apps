@@ -1,0 +1,27 @@
+.example-card {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 4px;
+  cursor: pointer;
+  
+
+  mat-card-content {
+    margin-left: 15px
+  }
+
+  mat-card-header {
+    // display: flex;
+    // justify-content: start;
+    .mat-card-header-text {
+      margin: 0px;
+    }
+  }
+}
+
+.example-card:hover {
+  // opacity: .1;
+  // box-shadow: whitesmoke;
+}
+img {
+    width: 80%;
+}

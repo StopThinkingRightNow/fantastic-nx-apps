@@ -56,6 +56,12 @@
     },
     "orders-orders": {
       "tags": []
+    },
+    "ui-domain-shell": {
+      "tags": []
+    },
+    "ui-presentation-user-interface": {
+      "tags": []
     }
   }
 }

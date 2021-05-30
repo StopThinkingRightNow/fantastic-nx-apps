@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { PageLayoutService } from '@rs-form/domain-shell';
 
 @Component({
   selector: 'rs-apps-app-container',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppContainerComponent implements OnInit {
 
-  constructor() { }
+  showSideNav = false;
+  constructor(@Inject(PageLayoutService) private pageLayoutService: PageLayoutService) { }
 
   ngOnInit(): void {
+  }
+
+  openSidebar() {
+    this.showSideNav = !this.showSideNav;
+    this.pageLayoutService.toggleSideNav(this.showSideNav);
   }
 
 }

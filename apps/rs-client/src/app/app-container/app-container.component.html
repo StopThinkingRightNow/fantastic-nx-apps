@@ -1,10 +1,24 @@
-<!-- <p>cart works!</p> -->
-<!-- <rs-layout></rs-layout> -->
-<!-- <rs-apps-navigation></rs-apps-navigation> -->
-<rs-page-layout-container [showSideNav]="true" [showHeader]="true" [showSideBar]="false">
-  <rs-page-layout-header><h1>Header</h1> <button>Show</button></rs-page-layout-header>
+<rs-page-layout-container [showSideNav]="showSideNav" [showHeader]="true" [showSideBar]="false">
+  <rs-page-layout-header>
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" (click)="openSidebar()" aria-label="Example icon-button with menu icon">
+       <mat-icon>menu</mat-icon>
+     </button>
+     <span>My App</span>
+     <span class="example-spacer"></span>
+
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+   </mat-toolbar>
+  </rs-page-layout-header>
   <rs-page-layout-content>
-    <!-- <rs-order-list></rs-order-list> -->
     <router-outlet></router-outlet>
   </rs-page-layout-content>
 </rs-page-layout-container>
