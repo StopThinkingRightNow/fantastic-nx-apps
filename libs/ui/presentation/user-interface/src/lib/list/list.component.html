@@ -1,5 +1,5 @@
 <div class="items-container">
     <ng-container *ngFor="let item of items">
-        <rs-apps-ui-item [item]="item"></rs-apps-ui-item>
+        <rs-apps-ui-item (itemClick)="onProductSelect($event)" (addCart)="onAddCart($event)" [item]="item"></rs-apps-ui-item>
     </ng-container>
 </div>

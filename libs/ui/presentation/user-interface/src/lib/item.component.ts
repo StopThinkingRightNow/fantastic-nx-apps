@@ -12,11 +12,22 @@ export class ItemComponent implements OnInit {
   item: ProductInterface;
 
   @Output()
-  onItemClick = new EventEmitter<any>();
+  itemClick = new EventEmitter<any>();
+
+  @Output()
+  addCart = new EventEmitter<any>();
   
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAddCart(item: any) {
+    this.addCart.emit(item);
+  }
+
+  onItemClick(item: any) {
+    this.itemClick.emit(item);
   }
 
 }

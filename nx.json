@@ -20,26 +20,32 @@
   },
   "projects": {
     "rs-client": {
-      "tags": []
+      "tags": ["category:rs-client", "type:app", "scope:rs-client"]
     },
     "rs-client-e2e": {
-      "tags": [],
+      "tags": ["scope:rs-client-e2e", "type:e2e", "category:rs-client"],
       "implicitDependencies": ["rs-client"]
     },
     "domain-domain-shell": {
-      "tags": []
+      "tags": ["scope:domain-domain-shell", "category:rs-client"]
     },
     "customers-domain-customers": {
-      "tags": []
+      "tags": ["scope:customers-domain-customers", "category:rs-client"]
     },
     "products-domain-products": {
-      "tags": []
+      "tags": ["scope:products-domain-products", "category:rs-client"],
+      "implicitDependencies": ["products-product-list"]
     },
     "cart-domain-cart": {
-      "tags": []
+      "tags": ["scope:cart-domain-cart", "category:rs-client"]
     },
     "orders-domain-orders": {
-      "tags": []
+      "tags": ["scope:orders-domain-orders", "category:rs-client"],
+      "implicitDependencies": [
+        "orders-feature-shell",
+        "orders-ui",
+        "orders-orders"
+      ]
     },
     "rs-company": {
       "tags": []
@@ -58,7 +64,8 @@
       "tags": []
     },
     "ui-domain-shell": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["ui-presentation-user-interface"]
     },
     "ui-presentation-user-interface": {
       "tags": []
@@ -67,6 +74,9 @@
       "tags": []
     },
     "orders-feature-shell": {
+      "tags": []
+    },
+    "data-store": {
       "tags": []
     }
   }

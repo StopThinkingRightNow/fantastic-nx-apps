@@ -1,1 +1,1 @@
-<rs-apps-ui-list [items]="products"></rs-apps-ui-list>
+<rs-apps-ui-list [items]="products" (itemClick)="onProductClick($event)" (addToCart)="onAddToCart($event)"></rs-apps-ui-list>

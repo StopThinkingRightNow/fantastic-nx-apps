@@ -622,6 +622,24 @@
           }
         }
       }
+    },
+    "data-store": {
+      "projectType": "library",
+      "root": "libs/data-store",
+      "sourceRoot": "libs/data-store/src",
+      "prefix": "rs-apps",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data-store/tsconfig.lib.json",
+              "libs/data-store/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/data-store/**/*"]
+          }
+        }
+      }
     }
   }
 }

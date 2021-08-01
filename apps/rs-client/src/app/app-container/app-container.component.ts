@@ -8,6 +8,44 @@ import { PageLayoutService } from '@rs-form/domain-shell';
   styleUrls: ['./app-container.component.scss']
 })
 export class AppContainerComponent implements OnInit {
+  
+  panelClosed = false;
+
+  folders: any[] = [
+    {
+      name: 'Thumbnail',  
+      label: 'Thumbnail',
+      type: 'img'
+    },
+    {
+      name: 'First name',
+      label: 'First name'
+    },
+    {
+      name: 'Last name',
+      label: 'Last name',
+    },
+    {
+      name: 'username',
+      label: 'Username',
+    },
+    {
+      name: 'siva@gmail.com',
+      label: 'Email',
+    },
+    {
+      name: 'siva@gmail.com',
+      label: 'password',
+    },
+    {
+      name: '6.8/10.0 GB (68%)',
+      label: 'Data used',
+    },
+    {
+      name: 'Yes',
+      label: 'Authorized',
+    }
+  ];
 
   showSideNav = false;
   constructor(@Inject(PageLayoutService) private pageLayoutService: PageLayoutService, private router: Router) { }
@@ -27,6 +65,10 @@ export class AppContainerComponent implements OnInit {
 
   navigateToUserProfile() {
 
+  }
+
+  onPanelClosed() {
+    this.panelClosed = !this.panelClosed
   }
 
 }

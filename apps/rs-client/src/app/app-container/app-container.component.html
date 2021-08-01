@@ -1,40 +1,29 @@
-<rs-page-layout-container [showSideNav]="showSideNav" [showHeader]="true" [showSideBar]="false">
-  <rs-page-layout-header>
-    <mat-toolbar>
-      <button mat-icon-button class="example-icon" (click)="openSidebar()" aria-label="Example icon-button with menu icon">
-       <mat-icon>menu</mat-icon>
-     </button>
-     <span>My App</span>
-     <span class="example-spacer"></span>
-
-    <button mat-icon-button (click)="navigateToCart()" aria-label="Example icon button with a vertical three dot icon">
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
-    <button mat-icon-button (click)="navigateToUserProfile()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>logout</mat-icon>
-    </button>
-   </mat-toolbar>
-  </rs-page-layout-header>
-  <rs-page-layout-side-menu>
-    <mat-list role="list">
-      <mat-list-item role="listitem">
-        <mat-icon>list</mat-icon>
-        <span>Products</span>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        <mat-icon>shopping_cart</mat-icon>
-        <span>Carts</span>
-      </mat-list-item>
-      <mat-list-item role="listitem">
-        <mat-icon>receipt_long</mat-icon>
-        <span>Orders</span>
-      </mat-list-item>
+<mat-accordion class="example-headers-align" [togglePosition]="'before'">
+  <mat-expansion-panel [expanded]="true" (closed)="onPanelClosed()">
+    <mat-expansion-panel-header [ngStyle]="">
+      <mat-panel-title> General </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-divider></mat-divider>
+      <ng-container *ngFor="let folder of folders">
+        <div class="list">
+          <mat-list-item class="label"> {{ folder.label }} </mat-list-item>
+          <mat-list-item class="value">
+            <ng-container *ngIf="folder.type === 'img'; else showText">
+              <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
+                <mat-icon>person</mat-icon>
+              </button>
+            </ng-container>
+            <ng-template #showText>
+              <span>{{ folder.name }}</span>
+            </ng-template>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-slide-toggle  class="toggle" *ngIf="'Authorized' === folder.label" [checked]="true"></mat-slide-toggle>
+          </mat-list-item>
+        </div>
+        <mat-divider></mat-divider>
+      </ng-container> 
     </mat-list>
-  </rs-page-layout-side-menu>
-  <rs-page-layout-content>
-    <router-outlet></router-outlet>
-  </rs-page-layout-content>
-</rs-page-layout-container>
+  </mat-expansion-panel>
+</mat-accordion>

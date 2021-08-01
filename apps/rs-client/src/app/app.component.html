@@ -1,17 +1,40 @@
-<!-- <nb-layout>
+<rs-page-layout-container [showSideNav]="showSideNav" [showHeader]="true" [showSideBar]="false">
+  <rs-page-layout-header>
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" (click)="openSidebar()" aria-label="Example icon-button with menu icon">
+       <mat-icon>menu</mat-icon>
+     </button>
+     <span>My App</span>
+     <span class="example-spacer"></span>
 
-  <nb-layout-header fixed>
-  
-  </nb-layout-header>
-
-  <nb-layout-column>
-    <rs-apps-app-container></rs-apps-app-container>
-    
-  </nb-layout-column>
-
-  <nb-layout-footer fixed>
-  
-  </nb-layout-footer>
-
-</nb-layout> -->
-<rs-apps-app-container></rs-apps-app-container>
+    <button mat-icon-button (click)="navigateToCart()" aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon [matBadge]="getCartCount()" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button (click)="navigateToUserProfile()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>logout</mat-icon>
+    </button>
+   </mat-toolbar>
+  </rs-page-layout-header>
+  <rs-page-layout-side-menu>
+    <mat-list role="list">
+      <mat-list-item role="listitem" (click)="navigateToProducts()">
+        <mat-icon>list</mat-icon>
+        <span>Products</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" (click)="navigateToCart()">
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Carts</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" (click)="navigateToOrders()">
+        <mat-icon>receipt_long</mat-icon>
+        <span>Orders</span>
+      </mat-list-item>
+    </mat-list>
+  </rs-page-layout-side-menu>
+  <rs-page-layout-content>
+    <router-outlet></router-outlet>
+  </rs-page-layout-content>
+</rs-page-layout-container>

@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { CartService } from '@rs-apps/data-store';
 import { PageLayoutService } from '@rs-form/domain-shell';
 
 @Component({
@@ -9,9 +10,11 @@ import { PageLayoutService } from '@rs-form/domain-shell';
 export class CartComponent implements OnInit {
 
   showSideBar = false;
-  constructor(@Inject(PageLayoutService) private pageLayoutService: PageLayoutService) { }
+  cartList: any = [];
+  constructor(private cartService: CartService, @Inject(PageLayoutService) private pageLayoutService: PageLayoutService) { }
 
   ngOnInit(): void {
+    this.cartList = this.cartService.getCartDetails();
   }
 
   openSidebar() {

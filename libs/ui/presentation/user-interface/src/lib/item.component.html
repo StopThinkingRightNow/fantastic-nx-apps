@@ -1,4 +1,4 @@
-<mat-card class="example-card">
+<mat-card class="example-card" (click)="onItemClick(item)">
   <mat-card-header>
     <div>
       {{ item.name }}
@@ -10,6 +10,6 @@
   <mat-card-actions>
     <p>{{ item.price }}</p>
     <!-- <button mat-button>Add to Cart</button> -->
-    <mat-icon>shopping_cart</mat-icon>
+    <mat-icon  (click)="onAddCart(item)">shopping_cart</mat-icon>
   </mat-card-actions>
 </mat-card>

@@ -14,28 +14,39 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 // import { NbThemeModule, NbLayoutModule, NbUserModule, NbCardModule } from '@nebular/theme';
 // import { NbEvaIconsModule } from '@nebular/eva-icons';
-import {MatListModule} from '@angular/material/list';
-
+import { MatListModule } from "@angular/material/list";
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { LoginComponent } from "libs/domain/login/login/login.component";
+import {MatBadgeModule} from '@angular/material/badge';
 
 const routes: Routes = [
   {
-    path: "",
-    component: AppContainerComponent,
-    children: [
-      {
-        path: "orders",
-        loadChildren: () =>
-          import("@rs-form/domain-orders").then((m) => m.DomainOrdersModule),
-      },
-      {
-        path: "products",
-        loadChildren: () =>
-          import("@rs-form/domain-products").then(
-            (m) => m.DomainProductsModule
-          ),
-      },
-    ],
+    path: 'login',
+    component: LoginComponent
   },
+  {
+    path: "orders",
+    loadChildren: () =>
+      import("@rs-form/domain-orders").then((m) => m.DomainOrdersModule),
+  },
+  {
+    path: "cart",
+    loadChildren: () =>
+      import("@rs-form/domain-cart").then((m) => m.DomainCartModule),
+  },
+  {
+    path: "products",
+    loadChildren: () =>
+      import("@rs-form/domain-products").then((m) => m.DomainProductsModule),
+  },
+  {
+    path: 'form',
+    component: AppContainerComponent
+  }
 ];
 
 @NgModule({
@@ -51,7 +62,13 @@ const routes: Routes = [
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatSlideToggleModule,
+    MatBadgeModule
     // NbThemeModule.forRoot({ name: 'default' }),
     // NbLayoutModule,
     // NbCardModule,

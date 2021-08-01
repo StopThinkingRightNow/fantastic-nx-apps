@@ -12,12 +12,22 @@ export class ListComponent implements OnInit {
   items: ProductInterface[];
 
   @Output()
-  onItemClick = new EventEmitter<any>();
+  itemClick = new EventEmitter<any>();
   
-
+  @Output()
+  addToCart = new EventEmitter<any>();
+  
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onProductSelect(item) {
+    this.itemClick.emit(item);
+  }
+
+  onAddCart(item) {
+    this.addToCart.emit(item);
   }
 
 }

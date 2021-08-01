@@ -41,7 +41,8 @@
       "@rs-form/orders/ui": ["libs/orders/ui/src/index.ts"],
       "@rs-form/orders/feature-shell": [
         "libs/orders/feature-shell/src/index.ts"
-      ]
+      ],
+      "@rs-apps/data-store": ["libs/data-store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
